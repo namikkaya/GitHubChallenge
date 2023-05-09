@@ -16,6 +16,12 @@
 		4D5964702A0955ED0077D770 /* GitHubChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59646F2A0955ED0077D770 /* GitHubChallengeTests.swift */; };
 		4D59647A2A0955EE0077D770 /* GitHubChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964792A0955EE0077D770 /* GitHubChallengeUITests.swift */; };
 		4D59647C2A0955EE0077D770 /* GitHubChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59647B2A0955EE0077D770 /* GitHubChallengeUITestsLaunchTests.swift */; };
+		4D5964932A0966C50077D770 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964922A0966C50077D770 /* Coordinator.swift */; };
+		4D5964952A09671C0077D770 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964942A09671C0077D770 /* ViewModel.swift */; };
+		4D5964972A09679F0077D770 /* TableViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964962A09679F0077D770 /* TableViewProvider.swift */; };
+		4D5964992A0967F30077D770 /* ControllerBehaviorally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964982A0967F30077D770 /* ControllerBehaviorally.swift */; };
+		4D59649B2A0968470077D770 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59649A2A0968470077D770 /* ApiManager.swift */; };
+		4D5964A02A0968CC0077D770 /* KError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59649F2A0968CC0077D770 /* KError.swift */; };
 		5F250F59ED05A92605B1E514 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E9307EB535685E5EA85281 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework */; };
 		88F7BB819603AFC75680AA73 /* Pods_GitHubChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B689D7253BCFC0A57EC49D3 /* Pods_GitHubChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +59,12 @@
 		4D5964752A0955EE0077D770 /* GitHubChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5964792A0955EE0077D770 /* GitHubChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubChallengeUITests.swift; sourceTree = "<group>"; };
 		4D59647B2A0955EE0077D770 /* GitHubChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4D5964922A0966C50077D770 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = ../../../Coordinator.swift; sourceTree = "<group>"; };
+		4D5964942A09671C0077D770 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		4D5964962A09679F0077D770 /* TableViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewProvider.swift; sourceTree = "<group>"; };
+		4D5964982A0967F30077D770 /* ControllerBehaviorally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerBehaviorally.swift; sourceTree = "<group>"; };
+		4D59649A2A0968470077D770 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		4D59649F2A0968CC0077D770 /* KError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KError.swift; sourceTree = "<group>"; };
 		545946F7B45A7597279BE909 /* Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallenge-GitHubChallengeUITests/Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F07A935BCFF67A483F34CB8 /* Pods-GitHubChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F23D553EAF1BEAEF6ED191E /* Pods-GitHubChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +130,7 @@
 				4D59648F2A095FC60077D770 /* Utilities */,
 				4D59648E2A095FBF0077D770 /* Managers */,
 				4D59648D2A095C830077D770 /* Coordinator */,
+				4D5964912A0965E90077D770 /* Interfaces */,
 				4D5964882A095C5D0077D770 /* Layers */,
 				4D5964582A0955EC0077D770 /* AppDelegate.swift */,
 				4D59645C2A0955EC0077D770 /* ViewController.swift */,
@@ -149,6 +162,7 @@
 		4D5964882A095C5D0077D770 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
+				4D59649C2A0968A90077D770 /* DataStore */,
 				4D59648C2A095C7B0077D770 /* Builders */,
 				4D59648B2A095C710077D770 /* Presentation */,
 				4D59648A2A095C6B0077D770 /* Domain */,
@@ -195,6 +209,7 @@
 		4D59648E2A095FBF0077D770 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				4D59649A2A0968470077D770 /* ApiManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -211,6 +226,41 @@
 			children = (
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		4D5964912A0965E90077D770 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				4D5964922A0966C50077D770 /* Coordinator.swift */,
+				4D5964942A09671C0077D770 /* ViewModel.swift */,
+				4D5964962A09679F0077D770 /* TableViewProvider.swift */,
+				4D5964982A0967F30077D770 /* ControllerBehaviorally.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		4D59649C2A0968A90077D770 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				4D59649E2A0968B90077D770 /* Output */,
+				4D59649D2A0968B30077D770 /* Input */,
+				4D59649F2A0968CC0077D770 /* KError.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		4D59649D2A0968B30077D770 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		4D59649E2A0968B90077D770 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Output;
 			sourceTree = "<group>";
 		};
 		8CBEA64F98AF5CA526EAF7CB /* Frameworks */ = {
@@ -233,7 +283,6 @@
 				9F23D553EAF1BEAEF6ED191E /* Pods-GitHubChallengeTests.debug.xcconfig */,
 				6F07A935BCFF67A483F34CB8 /* Pods-GitHubChallengeTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -477,7 +526,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D59645D2A0955EC0077D770 /* ViewController.swift in Sources */,
+				4D5964972A09679F0077D770 /* TableViewProvider.swift in Sources */,
 				4D5964592A0955EC0077D770 /* AppDelegate.swift in Sources */,
+				4D59649B2A0968470077D770 /* ApiManager.swift in Sources */,
+				4D5964A02A0968CC0077D770 /* KError.swift in Sources */,
+				4D5964952A09671C0077D770 /* ViewModel.swift in Sources */,
+				4D5964932A0966C50077D770 /* Coordinator.swift in Sources */,
+				4D5964992A0967F30077D770 /* ControllerBehaviorally.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

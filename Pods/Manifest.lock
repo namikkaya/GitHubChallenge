@@ -1,24 +1,33 @@
 PODS:
   - Alamofire (5.5.0)
-  - Kingfisher (7.1.2)
+  - Kingfisher (7.6.2)
   - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - Alamofire
-  - Kingfisher (~> 7.0)
+  - Kingfisher (from `https://github.com/onevcat/Kingfisher.git`, commit `af4be92`)
   - SnapKit (~> 5.6.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - Kingfisher
     - SnapKit
+
+EXTERNAL SOURCES:
+  Kingfisher:
+    :commit: af4be92
+    :git: https://github.com/onevcat/Kingfisher.git
+
+CHECKOUT OPTIONS:
+  Kingfisher:
+    :commit: af4be92
+    :git: https://github.com/onevcat/Kingfisher.git
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 681710f3b7b0cb4e7a7f81df18186bed2ecf0f49
+PODFILE CHECKSUM: 3c2a3d0ffeed542c0d8ee4dd9a2488ba2b54019c
 
 COCOAPODS: 1.11.2
