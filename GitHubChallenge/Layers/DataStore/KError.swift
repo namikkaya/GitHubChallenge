@@ -12,6 +12,9 @@ enum KErrorCode: Int, CaseIterable {
     case serverError = 1002 // Add more error cases if needed
     case wordValidError = 998
     case wordIsEmpty = 997
+    case localFetchDataError = 995
+    case localSaveDataError = 994
+    case localDeleteDataError = 993
     
     var errorDescription: String {
         switch self {
@@ -23,6 +26,12 @@ enum KErrorCode: Int, CaseIterable {
             return ""
         case .wordIsEmpty:
             return ""
+        case .localFetchDataError:
+            return "Local data not parse"
+        case .localSaveDataError:
+            return "Local data save error"
+        case .localDeleteDataError:
+            return "Local data delete error"
         }
     }
 }

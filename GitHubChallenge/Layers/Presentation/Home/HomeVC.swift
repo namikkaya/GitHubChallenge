@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 final class HomeVC: BaseViewController, ControllerBehaviorally {
     typealias P = HomeListProvider
@@ -20,6 +21,8 @@ final class HomeVC: BaseViewController, ControllerBehaviorally {
         self.title = "Home"
         setupUI()
         addObservationListener()
+        //save(id: 123, name: "bla bla", logoUrl: "test/logo")
+        //fetch()
         vm?.start()
     }
     

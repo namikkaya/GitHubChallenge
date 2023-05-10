@@ -14,8 +14,9 @@ protocol HomeBuilder {
 struct HomeBuilderImpl: HomeBuilder {
     func build(delegate: CoordinatorForVCDelegate?) -> UIViewController {
         let api = ApiManager()
+        let local = LocalManager()
         let listService = GoogleRepoListServiceImpl(apiManager: api)
-        let useCase = HomeUseCaseImpl(service: listService)
+        let useCase = HomeUseCaseImpl(service: listService, localManager: local)
         let vm = HomeVMImpl(useCase: useCase)
         let provider = HomeListProviderImpl()
         let vc = HomeVC()

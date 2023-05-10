@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		37A34F1C0BCED265515DD1FD /* Pods_GitHubChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0429817B601B7DC91C26E452 /* Pods_GitHubChallengeTests.framework */; };
+		4D282A2F2A0C2D0600077623 /* GitHubModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D282A2D2A0C2D0600077623 /* GitHubModel.xcdatamodeld */; };
+		4D282A312A0C31DA00077623 /* LocalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D282A302A0C31DA00077623 /* LocalManager.swift */; };
+		4D282A332A0C364700077623 /* LocalFavoriteEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D282A322A0C364700077623 /* LocalFavoriteEntities.swift */; };
 		4D5964592A0955EC0077D770 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964582A0955EC0077D770 /* AppDelegate.swift */; };
 		4D5964622A0955ED0077D770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D5964612A0955ED0077D770 /* Assets.xcassets */; };
 		4D5964652A0955ED0077D770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D5964632A0955ED0077D770 /* LaunchScreen.storyboard */; };
@@ -69,6 +72,9 @@
 		0429817B601B7DC91C26E452 /* Pods_GitHubChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		16E9307EB535685E5EA85281 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubChallenge_GitHubChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B689D7253BCFC0A57EC49D3 /* Pods_GitHubChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D282A2E2A0C2D0600077623 /* GitHubModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GitHubModel.xcdatamodel; sourceTree = "<group>"; };
+		4D282A302A0C31DA00077623 /* LocalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalManager.swift; sourceTree = "<group>"; };
+		4D282A322A0C364700077623 /* LocalFavoriteEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFavoriteEntities.swift; sourceTree = "<group>"; };
 		4D5964552A0955EC0077D770 /* GitHubChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5964582A0955EC0077D770 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D5964612A0955ED0077D770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 				4D5964612A0955ED0077D770 /* Assets.xcassets */,
 				4D5964632A0955ED0077D770 /* LaunchScreen.storyboard */,
 				4D5964662A0955ED0077D770 /* Info.plist */,
+				4D282A2D2A0C2D0600077623 /* GitHubModel.xcdatamodeld */,
 			);
 			path = GitHubChallenge;
 			sourceTree = "<group>";
@@ -266,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				4D59649A2A0968470077D770 /* ApiManager.swift */,
+				4D282A302A0C31DA00077623 /* LocalManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -319,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5964D82A0B86F40077D770 /* GoogleRepoListEntity.swift */,
+				4D282A322A0C364700077623 /* LocalFavoriteEntities.swift */,
 			);
 			path = Output;
 			sourceTree = "<group>";
@@ -696,8 +705,11 @@
 			files = (
 				4D5964AE2A0ABB230077D770 /* BaseViewController.swift in Sources */,
 				4D5964B42A0ABD500077D770 /* HomeCoordinator.swift in Sources */,
+				4D282A332A0C364700077623 /* LocalFavoriteEntities.swift in Sources */,
 				4D5964A82A0AB8830077D770 /* NSObject+Ext.swift in Sources */,
 				4D5964972A09679F0077D770 /* TableViewProvider.swift in Sources */,
+				4D282A2F2A0C2D0600077623 /* GitHubModel.xcdatamodeld in Sources */,
+				4D282A312A0C31DA00077623 /* LocalManager.swift in Sources */,
 				4D5964C42A0B71E10077D770 /* FavoritesCoordinator.swift in Sources */,
 				4D5964592A0955EC0077D770 /* AppDelegate.swift in Sources */,
 				4D5964D52A0B82380077D770 /* GoogleRepoListService.swift in Sources */,
@@ -1060,6 +1072,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4D282A2D2A0C2D0600077623 /* GitHubModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4D282A2E2A0C2D0600077623 /* GitHubModel.xcdatamodel */,
+			);
+			currentVersion = 4D282A2E2A0C2D0600077623 /* GitHubModel.xcdatamodel */;
+			path = GitHubModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4D59644D2A0955EC0077D770 /* Project object */;
 }
