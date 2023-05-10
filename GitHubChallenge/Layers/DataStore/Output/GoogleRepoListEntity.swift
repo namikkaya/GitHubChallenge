@@ -8,13 +8,14 @@
 import Foundation
 
 struct GoogleRepoListEntity: Decodable {
+    let id: Int?
     let name: String?
     let watcherCount: Int?
     let forksCount: Int?
     let owner: Owner?
     
     private enum CodingKeys : String, CodingKey {
-        case name, watchersCount = "watchers_count", forksCount = "forks_count", owner
+        case name, watchersCount = "watchers_count", forksCount = "forks_count", owner, id
     }
     
     init(from decoder: Decoder) throws {
@@ -23,6 +24,7 @@ struct GoogleRepoListEntity: Decodable {
         watcherCount = try values.decode(Int.self, forKey: .watchersCount)
         forksCount = try values.decode(Int.self, forKey: .forksCount)
         owner = try values.decode(Owner.self, forKey: .owner)
+        id = try values.decode(Int.self, forKey: .id)
     }
 }
 
