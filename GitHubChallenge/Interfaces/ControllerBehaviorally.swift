@@ -20,3 +20,15 @@ extension ControllerBehaviorally {
     func addObservationListener() {}
     func setupComponet(component: C) {}
 }
+
+
+protocol ControllerBehaviorallyWithoutComponent {
+    associatedtype P
+    associatedtype V
+    func inject(vm: V, provider: P)
+    func addObservationListener()
+}
+
+extension ControllerBehaviorallyWithoutComponent {
+    func addObservationListener() {}
+}

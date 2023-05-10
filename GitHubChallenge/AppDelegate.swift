@@ -7,9 +7,10 @@
 
 import UIKit
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var appCoordinator: AppCoordinator?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupAppUI()
@@ -24,9 +25,11 @@ extension AppDelegate {
         if #available(iOS 13.0, *) {
             window!.overrideUserInterfaceStyle = .light
         }
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         
-        self.window?.rootViewController = vc
+        let navController = UINavigationController()
+        appCoordinator = AppCoordinator(navController: navController)
+        appCoordinator?.start()
+        self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
     }
 }

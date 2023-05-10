@@ -11,6 +11,8 @@ import Alamofire
 final class ApiManager {
     private let baseURL: String = "https://api.github.com/"
     
+    var totalPage:Int?
+    
     enum EndPoint {
         case repoList, repoDetail
         
@@ -27,10 +29,18 @@ final class ApiManager {
                                                        parameter: Input? = nil,
                                                        outPutEntity: Output.Type,
                                                        completion: @escaping (Result<Output, KError>) -> ()) {
-        
-        AF.request(baseURL + endPoint.getPath(), method: httpMethod, parameters: parameter).responseDecodable(of: outPutEntity, queue: .global(qos: .background)) { response in
+        AF.request(baseURL + endPoint.getPath(), method: httpMethod, parameters: parameter).responseDecodable(of: outPutEntity, queue: .global(qos: .background)) { [weak self] response in
             switch response.result {
             case let .success(result):
+                if let linkHeader = response.response?.allHeaderFields["Link"] as? String {
+                    let pattern = #"page=(\d+)[^>]*>; rel="last""#
+                    let regex = try? NSRegularExpression(pattern: pattern, options: [])
+                    let totalCount = regex?.matches(in: linkHeader, options: [], range: NSRange(linkHeader.startIndex..., in: linkHeader)).last?.range(at: 1)
+                    if let totalCountRange = totalCount, let range = Range(totalCountRange, in: linkHeader) {
+                        let totalPages = Int(linkHeader[range]) ?? 0
+                        self?.totalPage = totalPages
+                    }
+                }
                 completion(.success(result))
             case let .failure(error):
                 let kError = error.mapToKError()
