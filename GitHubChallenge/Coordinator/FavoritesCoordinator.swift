@@ -54,7 +54,7 @@ final class FavoritesTabCoordinator: NSObject, SubCoordinator {
 }
 
 extension FavoritesTabCoordinator: CoordinatorForVCDelegate {
-    func coordinatorCommand(type: FlowType) {
+    func coordinatorCommand(eventType: FlowType) {
         
     }
 }

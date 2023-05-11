@@ -52,7 +52,7 @@ final class HomeTabCoordinator: NSObject, SubCoordinator {
 }
 
 extension HomeTabCoordinator: CoordinatorForVCDelegate {
-    func coordinatorCommand(type: FlowType) {
+    func coordinatorCommand(eventType: FlowType) {
         
     }
 }

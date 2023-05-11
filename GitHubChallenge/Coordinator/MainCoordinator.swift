@@ -34,6 +34,7 @@ final class MainCoordinator: NSObject, Coordinator {
         self.addChild(coordinator: homeTabCoordinator)
         self.addChild(coordinator: favoritesTabCoordinator)
         
+        
         homeTabCoordinator.coordinatorStateClosure = { eventType in // coordinator to coordinator
         }
         
@@ -83,7 +84,7 @@ final class MainCoordinator: NSObject, Coordinator {
 
 extension MainCoordinator: CoordinatorForVCDelegate {
     // controller to coordinator command
-    func coordinatorCommand(type: FlowType) {
+    func coordinatorCommand(eventType: FlowType) {
         
     }
     

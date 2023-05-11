@@ -17,7 +17,6 @@
 		4D5964702A0955ED0077D770 /* GitHubChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59646F2A0955ED0077D770 /* GitHubChallengeTests.swift */; };
 		4D59647A2A0955EE0077D770 /* GitHubChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964792A0955EE0077D770 /* GitHubChallengeUITests.swift */; };
 		4D59647C2A0955EE0077D770 /* GitHubChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D59647B2A0955EE0077D770 /* GitHubChallengeUITestsLaunchTests.swift */; };
-		4D5964932A0966C50077D770 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964922A0966C50077D770 /* Coordinator.swift */; };
 		4D5964952A09671C0077D770 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964942A09671C0077D770 /* ViewModel.swift */; };
 		4D5964972A09679F0077D770 /* TableViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964962A09679F0077D770 /* TableViewProvider.swift */; };
 		4D5964992A0967F30077D770 /* ControllerBehaviorally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964982A0967F30077D770 /* ControllerBehaviorally.swift */; };
@@ -47,6 +46,7 @@
 		4D5964D92A0B86F40077D770 /* GoogleRepoListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964D82A0B86F40077D770 /* GoogleRepoListEntity.swift */; };
 		4D5964DE2A0B8D680077D770 /* RepoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964DD2A0B8D680077D770 /* RepoItemCell.swift */; };
 		4D5964E02A0BA2FB0077D770 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964DF2A0BA2FB0077D770 /* UIImageView+Ext.swift */; };
+		4D8E845C2A0CD23600E8AE84 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E845B2A0CD23600E8AE84 /* Coordinator.swift */; };
 		5F250F59ED05A92605B1E514 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E9307EB535685E5EA85281 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework */; };
 		88F7BB819603AFC75680AA73 /* Pods_GitHubChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B689D7253BCFC0A57EC49D3 /* Pods_GitHubChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -85,7 +85,6 @@
 		4D5964752A0955EE0077D770 /* GitHubChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D5964792A0955EE0077D770 /* GitHubChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubChallengeUITests.swift; sourceTree = "<group>"; };
 		4D59647B2A0955EE0077D770 /* GitHubChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4D5964922A0966C50077D770 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = ../../../Coordinator.swift; sourceTree = "<group>"; };
 		4D5964942A09671C0077D770 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		4D5964962A09679F0077D770 /* TableViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewProvider.swift; sourceTree = "<group>"; };
 		4D5964982A0967F30077D770 /* ControllerBehaviorally.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerBehaviorally.swift; sourceTree = "<group>"; };
@@ -115,6 +114,7 @@
 		4D5964D82A0B86F40077D770 /* GoogleRepoListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleRepoListEntity.swift; sourceTree = "<group>"; };
 		4D5964DD2A0B8D680077D770 /* RepoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItemCell.swift; sourceTree = "<group>"; };
 		4D5964DF2A0BA2FB0077D770 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		4D8E845B2A0CD23600E8AE84 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		545946F7B45A7597279BE909 /* Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallenge-GitHubChallengeUITests/Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F07A935BCFF67A483F34CB8 /* Pods-GitHubChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F23D553EAF1BEAEF6ED191E /* Pods-GitHubChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -297,10 +297,10 @@
 		4D5964912A0965E90077D770 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				4D5964922A0966C50077D770 /* Coordinator.swift */,
 				4D5964942A09671C0077D770 /* ViewModel.swift */,
 				4D5964962A09679F0077D770 /* TableViewProvider.swift */,
 				4D5964982A0967F30077D770 /* ControllerBehaviorally.swift */,
+				4D8E845B2A0CD23600E8AE84 /* Coordinator.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -713,6 +713,7 @@
 				4D5964C42A0B71E10077D770 /* FavoritesCoordinator.swift in Sources */,
 				4D5964592A0955EC0077D770 /* AppDelegate.swift in Sources */,
 				4D5964D52A0B82380077D770 /* GoogleRepoListService.swift in Sources */,
+				4D8E845C2A0CD23600E8AE84 /* Coordinator.swift in Sources */,
 				4D5964A52A0AB8020077D770 /* MainCoordinator.swift in Sources */,
 				4D5964D02A0B7D0E0077D770 /* UITableView+Ext.swift in Sources */,
 				4D5964D72A0B82C80077D770 /* GoogleRepoRequestEntity.swift in Sources */,
@@ -732,7 +733,6 @@
 				4D5964B92A0ADE3B0077D770 /* SplashVC.swift in Sources */,
 				4D5964CC2A0B76EF0077D770 /* HomeVM.swift in Sources */,
 				4D5964C02A0AE6CF0077D770 /* SplashUIProvider.swift in Sources */,
-				4D5964932A0966C50077D770 /* Coordinator.swift in Sources */,
 				4D5964992A0967F30077D770 /* ControllerBehaviorally.swift in Sources */,
 				4D5964BE2A0AE55B0077D770 /* SplashVM.swift in Sources */,
 				4D5964CA2A0B754B0077D770 /* FavoritesBuilder.swift in Sources */,

@@ -58,12 +58,12 @@ final class AppCoordinator: NSObject, Coordinator {
 // MARK: - Controller To Coordinator
 extension AppCoordinator: CoordinatorForVCDelegate {
     // controller to Coordinator command
-    func coordinatorCommand(type: FlowType) {
-        switch type {
+    func coordinatorCommand(eventType: FlowType) {
+        switch eventType {
         case .appFlow(let type):
             switch type {
-            case .mainFlow(let type):
-                mainFlowHandler(type)
+            case .mainFlow(let flowType):
+                mainFlowHandler(flowType)
             }
         default: break
         }

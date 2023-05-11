@@ -44,7 +44,7 @@ final class SplashVC: BaseViewController, ControllerBehaviorallyWithoutComponent
     private func vmEventHandler(_ eventType: SplashVMImpl.UserInteraction?) {
         switch eventType {
         case .gotoMain:
-            self.coordinatorDelegate?.coordinatorCommand(type: .appFlow(type: .mainFlow(type: .home)))
+            self.coordinatorDelegate?.coordinatorCommand(eventType: .appFlow(flowType: .mainFlow(flowType: .home)))
         default: break
         }
     }
