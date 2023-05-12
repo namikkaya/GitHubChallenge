@@ -12,6 +12,12 @@ protocol HomeVM: ViewModel {
     func prefetchItemsAt(indexPaths: [IndexPath])
     func getRepoData(indexPath: IndexPath) -> GoogleRepoListEntity?
     func checkFavorite()
+    func fetchFilter()
+    var sortList: [GoogleRepoRequestEntity.SortType] { get set }
+    var typeList: [GoogleRepoRequestEntity.ReqType] { get set }
+    var selectedFilterSortType: GoogleRepoRequestEntity.SortType? { get set }
+    var selectedFilterType: GoogleRepoRequestEntity.ReqType? { get set }
+    
 }
 
 final class HomeVMImpl: HomeVM {
@@ -27,11 +33,19 @@ final class HomeVMImpl: HomeVM {
     
     private var isFetch: Bool = false
     
+    var sortList = [GoogleRepoRequestEntity.SortType]()
+    var typeList = [GoogleRepoRequestEntity.ReqType]()
+    
+    var selectedFilterSortType: GoogleRepoRequestEntity.SortType?
+    var selectedFilterType: GoogleRepoRequestEntity.ReqType?
+    
     init(useCase: HomeUseCase) {
         self.useCase = useCase
     }
     
     func start() {
+        createSortList()
+        createTypeList()
         fetchFavorites { [weak self] result in
             switch result {
             case .success(let success):
@@ -56,6 +70,25 @@ final class HomeVMImpl: HomeVM {
             self?.stateClosure?(.action(data: .updateUI(data: self?.rows ?? [])))
         }
     }
+    
+    func fetchFilter() {
+        rows.removeAll()
+        dataList.removeAll()
+        pageNumber = 1
+        fetchList()
+    }
+    
+    private func createSortList() {
+        GoogleRepoRequestEntity.SortType.allCases.forEach { item in
+            sortList.append(item)
+        }
+    }
+    
+    private func createTypeList() {
+        GoogleRepoRequestEntity.ReqType.allCases.forEach { item in
+            typeList.append(item)
+        }
+    }
 }
 
 extension HomeVMImpl {
@@ -71,7 +104,7 @@ extension HomeVMImpl {
     private func fetchList() {
         isLoading = true
         isFetch = true
-        useCase?.fetchGoogleRepoList(pageNumber: self.pageNumber, completion: { [weak self] result in
+        useCase?.fetchGoogleRepoList(pageNumber: self.pageNumber, filterSort: self.selectedFilterSortType, filterType: self.selectedFilterType, completion: { [weak self] result in
             switch result {
             case .success(let data):
                 self?.dataList.append(contentsOf: data)

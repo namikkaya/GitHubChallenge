@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomeUseCase {
-    func fetchGoogleRepoList(pageNumber:Int?, completion: @escaping (Result<[GoogleRepoListEntity], KError>) -> ())
+    func fetchGoogleRepoList(pageNumber:Int?,filterSort: GoogleRepoRequestEntity.SortType?, filterType: GoogleRepoRequestEntity.ReqType?, completion: @escaping (Result<[GoogleRepoListEntity], KError>) -> ())
     var perPage: Int { get }
     var totalPage: Int? { get }
     var favoritesData: [LocalFavoriteEntity] { get set }
@@ -28,8 +28,8 @@ struct HomeUseCaseImpl: HomeUseCase {
     
     var favoritesData: [LocalFavoriteEntity] = []
     
-    func fetchGoogleRepoList(pageNumber:Int?, completion: @escaping (Result<[GoogleRepoListEntity], KError>) -> ()) {
-        let req = GoogleRepoRequestEntity(page: pageNumber, perPage: perPage)
+    func fetchGoogleRepoList(pageNumber:Int?, filterSort: GoogleRepoRequestEntity.SortType? = .created, filterType: GoogleRepoRequestEntity.ReqType? = .all, completion: @escaping (Result<[GoogleRepoListEntity], KError>) -> ()) {
+        let req = GoogleRepoRequestEntity(page: pageNumber, perPage: perPage, sort: filterSort ?? .created, type: filterType ?? .all)
         listService.fetchGoogleRepoList(req: req, completion: completion)
     }
     

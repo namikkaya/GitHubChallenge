@@ -67,7 +67,7 @@ final class LocalManager {
         do {
             let results = try context.fetch(fetchRequest)
             completion(.success(results.count > 0))
-        } catch let error {
+        } catch {
             completion(.failure(KError(errorCode: .general)))
         }
     }

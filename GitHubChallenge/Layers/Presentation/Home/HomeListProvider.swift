@@ -11,6 +11,8 @@ import SnapKit
 protocol HomeListProvider: TableViewProvider where T == HomeVMImpl.RowType, I == IndexPath {
     var tableViewStateClosure: ( (ObservationType<HomeListProviderImpl.TableViewUserInteraction, Error>) -> () )? { get set }
     func setupUI(contentContainer: UIView)
+    func setSortButtonTitle(title: String)
+    func setTypeButtonTitle(title: String)
 }
 
 
@@ -19,22 +21,72 @@ final class HomeListProviderImpl: NSObject, HomeListProvider {
     
     var dataList: [HomeVMImpl.RowType] = []
     
+    lazy private var sortButton = {
+        let button = UIButton()
+        button.setTitle("Sort", for: .normal)
+        return button
+    }()
+    
+    lazy private var typeButton = {
+        let button = UIButton()
+        button.setTitle("Type", for: .normal)
+        return button
+    }()
+    
+    lazy private var hStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.spacing = 0
+        stack.distribution = .fillEqually
+        stack.backgroundColor = .lightGray
+        return stack
+    }()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         return tableView
     }()
     
     func setupUI(contentContainer: UIView) {
+        contentContainer.addSubview(hStack)
         contentContainer.addSubview(tableView)
         setupTableView(tableView: tableView)
+        
+        hStack.addArrangedSubview(sortButton)
+        hStack.addArrangedSubview(typeButton)
+        
         addConstraint(container: contentContainer)
+        
+        sortButton.addTarget(self, action: #selector(openSortPage(_:)), for:.touchUpInside)
+        typeButton.addTarget(self, action: #selector(openTypePage(_:)), for:.touchUpInside)
     }
     
     private func addConstraint(container: UIView) {
+        hStack.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(container.safeAreaLayoutGuide.snp.top)
+            make.height.equalTo(34)
+        }
         tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(container.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(hStack.snp.bottom)
         }
+    }
+    
+    @objc func openSortPage(_ sender : UIButton) {
+        self.tableViewStateClosure?(.action(data: .openSortPage))
+    }
+    
+    @objc func openTypePage(_ sender : UIButton) {
+        self.tableViewStateClosure?(.action(data: .openTypePage))
+    }
+    
+    func setSortButtonTitle(title: String) {
+        sortButton.titleLabel?.text = title
+    }
+    
+    func setTypeButtonTitle(title: String) {
+        typeButton.titleLabel?.text = title
     }
 }
 
@@ -96,6 +148,6 @@ extension HomeListProviderImpl: UITableViewDelegate, UITableViewDataSource, UITa
 
 extension HomeListProviderImpl {
     enum TableViewUserInteraction {
-        case didSelect(indexPath: IndexPath), prefetching(indexPaths: [IndexPath])
+        case didSelect(indexPath: IndexPath), prefetching(indexPaths: [IndexPath]), openSortPage, openTypePage
     }
 }

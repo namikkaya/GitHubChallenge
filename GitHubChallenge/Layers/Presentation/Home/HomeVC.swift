@@ -80,6 +80,10 @@ extension HomeVC {
             self.coordinatorDelegate?.coordinatorCommand(eventType: .appFlow(flowType: .mainFlow(flowType: .detail(data: repoData))))
         case .prefetching(let indexPaths):
             vm?.prefetchItemsAt(indexPaths: indexPaths)
+        case .openSortPage:
+            openSortList()
+        case .openTypePage:
+            openTypeList()
         }
     }
 }
@@ -88,11 +92,39 @@ extension HomeVC {
 // MARK: - UI Action
 extension HomeVC {
     private func displayError(_ err: KError?) {
-        let alert = UIAlertController(title: "", message: err?.message ?? KErrorCode.general.errorDescription, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
-             }))
         DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(title: "", message: err?.message ?? KErrorCode.general.errorDescription, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+            }))
             self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func openSortList() {
+        DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(title: "Select Sort Value", message: nil, preferredStyle: .actionSheet)
+            self?.vm?.sortList.forEach({ item in
+                alert.addAction(UIAlertAction(title: item.rawValue, style: .default, handler: { (action) in
+                    self?.vm?.selectedFilterSortType = item
+                    self?.vm?.fetchFilter()
+                }))
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: false, completion: nil)
+        }
+    }
+    
+    private func openTypeList() {
+        DispatchQueue.main.async { [weak self] in
+            let alert = UIAlertController(title: "Select Type Value", message: nil, preferredStyle: .actionSheet)
+            self?.vm?.typeList.forEach({ item in
+                alert.addAction(UIAlertAction(title: item.rawValue, style: .default, handler: { (action) in
+                    self?.vm?.selectedFilterType = item
+                    self?.vm?.fetchFilter()
+                }))
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            self?.present(alert, animated: false, completion: nil)
         }
     }
 }
