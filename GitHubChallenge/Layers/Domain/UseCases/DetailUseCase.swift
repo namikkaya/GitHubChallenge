@@ -1,44 +1,23 @@
 //
-//  HomeUseCase.swift
+//  DetailUseCase.swift
 //  GitHubChallenge
 //
-//  Created by namik kaya on 10.05.2023.
+//  Created by NAMIK KAYA on 12.05.2023.
 //
 
 import Foundation
 
-protocol HomeUseCase {
-    func fetchGoogleRepoList(pageNumber:Int?, completion: @escaping (Result<[GoogleRepoListEntity], KError>) -> ())
-    var perPage: Int { get }
-    var totalPage: Int? { get }
-    var favoritesData: [LocalFavoriteEntity] { get set }
+protocol DetailUseCase {
     func localSave(data: GoogleRepoListEntity?, completion: @escaping (Result<Bool, KError>) -> ())
     func fetchAll(completion: @escaping (Result<[LocalFavoriteEntity], KError>) -> ())
     func deleteRecord(id: Int, completion: @escaping (Result<Bool, KError>) -> ())
     func checkDataExists(id: Int, completion: @escaping (Result<Bool, KError>) -> ())
 }
 
-struct HomeUseCaseImpl: HomeUseCase {
-    private let listService: GoogleRepoListService
+struct DetailUseCaseImpl: DetailUseCase {
     private let local: LocalManager
-    init(service: GoogleRepoListService, localManager: LocalManager){
-        self.listService = service
+    init(localManager: LocalManager){
         self.local = localManager
-    }
-    
-    var favoritesData: [LocalFavoriteEntity] = []
-    
-    func fetchGoogleRepoList(pageNumber:Int?, completion: @escaping (Result<[GoogleRepoListEntity], KError>) -> ()) {
-        let req = GoogleRepoRequestEntity(page: pageNumber, perPage: perPage)
-        listService.fetchGoogleRepoList(req: req, completion: completion)
-    }
-    
-    var perPage:Int {
-        return 15
-    }
-    
-    var totalPage: Int? {
-        return listService.totalPage
     }
     
     func localSave(data: GoogleRepoListEntity?, completion: @escaping (Result<Bool, KError>) -> ()) {

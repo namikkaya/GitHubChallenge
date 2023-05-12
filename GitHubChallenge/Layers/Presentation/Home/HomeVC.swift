@@ -21,13 +21,14 @@ final class HomeVC: BaseViewController, ControllerBehaviorally {
         self.title = "Home"
         setupUI()
         addObservationListener()
-        //save(id: 123, name: "bla bla", logoUrl: "test/logo")
-        //fetch()
         vm?.start()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        if !isFirstOpen {
+            vm?.checkFavorite()
+        }
+        super.viewWillAppear(animated)
     }
     
     func inject(vm: V, provider: any P) {
@@ -41,13 +42,15 @@ final class HomeVC: BaseViewController, ControllerBehaviorally {
     
 }
 
+// MARK: - Binding
 extension HomeVC {
     func addObservationListener() {
         vm?.stateClosure = { [weak self] eventType in
             switch eventType {
             case .action(let data):
                 self?.vmEventHandler(data)
-            case .error(let error): break
+            case .error(let error):
+                self?.displayError(error)
             }
             
         }
@@ -73,9 +76,23 @@ extension HomeVC {
         guard let eventType else { return }
         switch eventType {
         case .didSelect(let indexPath):
-            break
+            guard let repoData = vm?.getRepoData(indexPath: indexPath) else { return }
+            self.coordinatorDelegate?.coordinatorCommand(eventType: .appFlow(flowType: .mainFlow(flowType: .detail(data: repoData))))
         case .prefetching(let indexPaths):
             vm?.prefetchItemsAt(indexPaths: indexPaths)
+        }
+    }
+}
+
+
+// MARK: - UI Action
+extension HomeVC {
+    private func displayError(_ err: KError?) {
+        let alert = UIAlertController(title: "", message: err?.message ?? KErrorCode.general.errorDescription, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (_) in
+             }))
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
         }
     }
 }

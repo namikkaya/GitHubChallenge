@@ -55,9 +55,9 @@ extension HomeListProviderImpl: UITableViewDelegate, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let rowType = dataList[indexPath.row]
         switch rowType {
-        case .repoItem(let repoData):
+        case .repoItem(let repoData, let isFavorite):
             let cell = tableView.dequeueReusableCell(with: RepoItemCell.self, for: indexPath)
-            cell.setup(data: repoData)
+            cell.setup(data: repoData, isFavorite: isFavorite)
             return cell
         }
     }

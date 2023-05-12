@@ -53,5 +53,5 @@ enum AppFlow {
 }
 
 enum MainFlow {
-    case home, detail
+    case home, detail(data: GoogleRepoListEntity?)
 }

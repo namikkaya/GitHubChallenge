@@ -49,10 +49,31 @@ final class HomeTabCoordinator: NSObject, SubCoordinator {
             completion?()
         }
     }
+    
+    private func gotoDetail(data: GoogleRepoListEntity?) {
+        let detailVC = DetailsBuilderImpl().build(delegate: self, data: data)
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationController.pushViewController(detailVC, animated: true)
+        }
+    }
 }
 
 extension HomeTabCoordinator: CoordinatorForVCDelegate {
     func coordinatorCommand(eventType: FlowType) {
-        
+        switch eventType {
+        case .appFlow(let flowType):
+            switch flowType {
+            case .mainFlow(let flowType):
+                homeFlowHandler(flowType)
+            }
+        }
+    }
+    
+    private func homeFlowHandler(_ flowType: MainFlow) {
+        switch flowType {
+        case .detail(let data):
+            gotoDetail(data: data)
+        default: break
+        }
     }
 }

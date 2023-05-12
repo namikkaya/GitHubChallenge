@@ -43,11 +43,13 @@ final class LocalManager {
         }
     }
     
-    func deleteRecords(id: Int, completion: @escaping (Result<Bool, KError>) -> ()) {
+    func deleteRecord(id: Int, completion: @escaping (Result<Bool, KError>) -> ()) {
         let context = appDelegate.persistentContainer.viewContext
 
-        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "GitHubEntity")
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "GitHubEntity")
+        fetchRequest.predicate = NSPredicate(format: "id == %d", id)
+
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
         do {
             try context.execute(deleteRequest)
@@ -58,4 +60,15 @@ final class LocalManager {
         }
     }
     
+    func checkDataExists(id: Int, completion: @escaping (Result<Bool, KError>) -> ()) {
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<GitHubEntity>(entityName: "GitHubEntity")
+        fetchRequest.predicate = NSPredicate(format: "id = %d", id)
+        do {
+            let results = try context.fetch(fetchRequest)
+            completion(.success(results.count > 0))
+        } catch let error {
+            completion(.failure(KError(errorCode: .general)))
+        }
+    }
 }

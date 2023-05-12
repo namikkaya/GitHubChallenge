@@ -10,14 +10,17 @@ import Foundation
 protocol HomeVM: ViewModel {
     var stateClosure: ( (ObservationType<HomeVMImpl.UserInteraction, KError>) -> () )? { get set }
     func prefetchItemsAt(indexPaths: [IndexPath])
+    func getRepoData(indexPath: IndexPath) -> GoogleRepoListEntity?
+    func checkFavorite()
 }
 
 final class HomeVMImpl: HomeVM {
     var stateClosure: ((ObservationType<HomeVMImpl.UserInteraction, KError>) -> ())?
     
-    private let useCase: HomeUseCase?
+    private var useCase: HomeUseCase?
     
     private var rows = [RowType]()
+    private var dataList: [GoogleRepoListEntity] = []
     
     private var pageNumber: Int = 1
     private var isLoading: Bool = false
@@ -29,17 +32,29 @@ final class HomeVMImpl: HomeVM {
     }
     
     func start() {
-        fetchList()
-        /*useCase?.fetchAll(completion: { [weak self] result in
+        fetchFavorites { [weak self] result in
             switch result {
             case .success(let success):
-                
-                break
+                self?.useCase?.favoritesData = success
             case .failure(let failure):
-                
-                break
+                self?.stateClosure?(.error(error: failure))
             }
-        })*/
+            self?.fetchList()
+        }
+    }
+    
+    func checkFavorite() {
+        fetchFavorites { [weak self] result in
+            switch result {
+            case .success(let success):
+                self?.useCase?.favoritesData = success
+            case .failure(let failure):
+                self?.stateClosure?(.error(error: failure))
+            }
+            let newRowData = self?.prepareUI(data: self?.dataList ?? [])
+            self?.rows = newRowData ?? []
+            self?.stateClosure?(.action(data: .updateUI(data: self?.rows ?? [])))
+        }
     }
 }
 
@@ -51,6 +66,7 @@ extension HomeVMImpl {
     }
 }
 
+// MARK: - Api
 extension HomeVMImpl {
     private func fetchList() {
         isLoading = true
@@ -58,8 +74,8 @@ extension HomeVMImpl {
         useCase?.fetchGoogleRepoList(pageNumber: self.pageNumber, completion: { [weak self] result in
             switch result {
             case .success(let data):
-                self?.saveLocalData(data: data.first)
-                let listData = self?.prepareUI(data: data, pageNumber: self?.pageNumber ?? 1)
+                self?.dataList.append(contentsOf: data)
+                let listData = self?.prepareUI(data: data)
                 self?.rows.append(contentsOf: listData ?? [])
                 self?.stateClosure?(.action(data: .updateUI(data: self?.rows ?? [])))
                 self?.pageNumber += 1
@@ -72,31 +88,33 @@ extension HomeVMImpl {
             self?.isLoading = false
         })
     }
-    
-    private func saveLocalData(data: GoogleRepoListEntity?) {
-        guard let data else { return }
+}
+
+// MARK: - Local Data
+extension HomeVMImpl {
+    private func fetchFavorites (completion: @escaping (Result<[LocalFavoriteEntity], KError>) -> () = {_ in }) {
         DispatchQueue.global(qos: .background).async { [weak self] in
-            self?.useCase?.localSave(data: data, completion: { result in
-                switch result {
-                case .success(let success):
-                    
-                    break
-                case .failure(let failure):
-                    
-                    break
-                }
-            })
+            self?.useCase?.fetchAll(completion: completion)
         }
     }
 }
 
+// MARK: - Prepare UI
 extension HomeVMImpl {
-    private func prepareUI(data: [GoogleRepoListEntity], pageNumber: Int) -> [RowType] {
+    private func prepareUI(data: [GoogleRepoListEntity]) -> [RowType] {
         var addRows = [RowType]()
         data.forEach { repoItem in
-            addRows.append(.repoItem(repoData: repoItem))
+            addRows.append(.repoItem(repoData: repoItem, isFavorite: useCase?.favoritesData.contains(where: { $0.id == repoItem.id }) ?? false))
         }
         return addRows
+    }
+    
+    func getRepoData(indexPath: IndexPath) -> GoogleRepoListEntity? {
+        let rowType = self.rows[indexPath.row]
+        switch rowType {
+        case .repoItem(let repoData, _):
+            return repoData
+        }
     }
 }
 
@@ -106,6 +124,6 @@ extension HomeVMImpl {
     }
     
     enum RowType {
-        case repoItem(repoData: GoogleRepoListEntity?)
+        case repoItem(repoData: GoogleRepoListEntity?, isFavorite: Bool)
     }
 }

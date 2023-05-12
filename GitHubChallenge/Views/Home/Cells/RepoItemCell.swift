@@ -7,9 +7,8 @@
 
 import UIKit
 
-class RepoItemCell: UITableViewCell {
-    
-    lazy var vStack: UIStackView = {
+final class RepoItemCell: UITableViewCell {
+    lazy private var vStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 0
@@ -20,7 +19,7 @@ class RepoItemCell: UITableViewCell {
         return stack
     }()
     
-    lazy var hStack: UIStackView = {
+    lazy private var hStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.spacing = 0
@@ -29,32 +28,44 @@ class RepoItemCell: UITableViewCell {
         return stack
     }()
 
-    lazy var titleLabel: UILabel = {
-        return UILabel()
+    lazy private var titleLabel: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
-    lazy var followersCount: UILabel = {
-        return UILabel()
+    lazy private var followersCount: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
-    lazy var forksCount: UILabel = {
-        return UILabel()
+    lazy private var forksCount: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
-    lazy var ownerRepos: UILabel = {
-        return UILabel()
+    lazy private var ownerRepos: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
-    lazy var ownerLogo: UIImageView = {
+    lazy private var favView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .green
+        return view
+    }()
+    
+    lazy private var ownerLogo: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         return image
     }()
     
-    lazy var imageContainer: UIView = {
+    lazy private var imageContainer: UIView = {
         return UIView()
     }()
+    
+    private var data: GoogleRepoListEntity?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -71,7 +82,8 @@ class RepoItemCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func setup(data: GoogleRepoListEntity?) {
+    func setup(data: GoogleRepoListEntity?, isFavorite: Bool) {
+        favView.isHidden = !isFavorite
         titleLabel.text = data?.name
         ownerRepos.text = data?.owner?.reposURL
         followersCount.text = "Watcher Count: \(data?.watcherCount ?? 0)"
@@ -90,6 +102,7 @@ class RepoItemCell: UITableViewCell {
 extension RepoItemCell {
     private func setupUI() {
         self.addSubview(hStack)
+        hStack.addArrangedSubview(favView)
         hStack.addArrangedSubview(imageContainer)
         hStack.addArrangedSubview(vStack)
         vStack.addArrangedSubview(titleLabel)
@@ -104,6 +117,11 @@ extension RepoItemCell {
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(16)
             make.bottom.equalTo(-16)
+        }
+        
+        favView.snp.makeConstraints { make in
+            make.width.equalTo(12)
+            make.height.equalToSuperview()
         }
         
         imageContainer.snp.makeConstraints { make in

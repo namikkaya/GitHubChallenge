@@ -65,7 +65,6 @@ extension AppCoordinator: CoordinatorForVCDelegate {
             case .mainFlow(let flowType):
                 mainFlowHandler(flowType)
             }
-        default: break
         }
     }
     

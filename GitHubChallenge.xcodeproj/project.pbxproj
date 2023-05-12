@@ -47,6 +47,12 @@
 		4D5964DE2A0B8D680077D770 /* RepoItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964DD2A0B8D680077D770 /* RepoItemCell.swift */; };
 		4D5964E02A0BA2FB0077D770 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5964DF2A0BA2FB0077D770 /* UIImageView+Ext.swift */; };
 		4D8E845C2A0CD23600E8AE84 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E845B2A0CD23600E8AE84 /* Coordinator.swift */; };
+		4D8E84602A0D7C5D00E8AE84 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E845F2A0D7C5D00E8AE84 /* DetailsVC.swift */; };
+		4D8E84622A0E040200E8AE84 /* DetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84612A0E040200E8AE84 /* DetailVM.swift */; };
+		4D8E84642A0E049600E8AE84 /* DetailUIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84632A0E049600E8AE84 /* DetailUIProvider.swift */; };
+		4D8E84672A0E055900E8AE84 /* DetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84662A0E055900E8AE84 /* DetailsBuilder.swift */; };
+		4D8E84692A0E09BB00E8AE84 /* DetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84682A0E09BB00E8AE84 /* DetailUseCase.swift */; };
+		4D8E846B2A0E149900E8AE84 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E846A2A0E149900E8AE84 /* ToggleButton.swift */; };
 		5F250F59ED05A92605B1E514 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E9307EB535685E5EA85281 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework */; };
 		88F7BB819603AFC75680AA73 /* Pods_GitHubChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B689D7253BCFC0A57EC49D3 /* Pods_GitHubChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -115,6 +121,12 @@
 		4D5964DD2A0B8D680077D770 /* RepoItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoItemCell.swift; sourceTree = "<group>"; };
 		4D5964DF2A0BA2FB0077D770 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		4D8E845B2A0CD23600E8AE84 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4D8E845F2A0D7C5D00E8AE84 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
+		4D8E84612A0E040200E8AE84 /* DetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVM.swift; sourceTree = "<group>"; };
+		4D8E84632A0E049600E8AE84 /* DetailUIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUIProvider.swift; sourceTree = "<group>"; };
+		4D8E84662A0E055900E8AE84 /* DetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBuilder.swift; sourceTree = "<group>"; };
+		4D8E84682A0E09BB00E8AE84 /* DetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCase.swift; sourceTree = "<group>"; };
+		4D8E846A2A0E149900E8AE84 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		545946F7B45A7597279BE909 /* Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallenge-GitHubChallengeUITests/Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F07A935BCFF67A483F34CB8 /* Pods-GitHubChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F23D553EAF1BEAEF6ED191E /* Pods-GitHubChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				4D5964912A0965E90077D770 /* Interfaces */,
-				4D5964902A095FD20077D770 /* Resources */,
 				4D59648F2A095FC60077D770 /* Utilities */,
 				4D59648E2A095FBF0077D770 /* Managers */,
 				4D59648D2A095C830077D770 /* Coordinator */,
@@ -240,6 +251,7 @@
 		4D59648B2A095C710077D770 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4D8E845E2A0D7C3900E8AE84 /* Details */,
 				4D5964B72A0ADE160077D770 /* Splash */,
 				4D5964C52A0B73E60077D770 /* Favorites */,
 				4D5964AA2A0ABAD30077D770 /* Home */,
@@ -251,6 +263,7 @@
 		4D59648C2A095C7B0077D770 /* Builders */ = {
 			isa = PBXGroup;
 			children = (
+				4D8E84652A0E054800E8AE84 /* Details */,
 				4D5964C82A0B75380077D770 /* Favorites */,
 				4D5964BA2A0ADE840077D770 /* Splash */,
 				4D5964AF2A0ABC2B0077D770 /* Home */,
@@ -283,15 +296,9 @@
 			children = (
 				4D5964A62A0AB8730077D770 /* Extensions */,
 				4D5964A12A0AB7730077D770 /* Base */,
+				4D8E846A2A0E149900E8AE84 /* ToggleButton.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		4D5964902A095FD20077D770 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		4D5964912A0965E90077D770 /* Interfaces */ = {
@@ -414,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5964D22A0B81F10077D770 /* HomeUseCase.swift */,
+				4D8E84682A0E09BB00E8AE84 /* DetailUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -440,6 +448,24 @@
 				4D5964DD2A0B8D680077D770 /* RepoItemCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4D8E845E2A0D7C3900E8AE84 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				4D8E845F2A0D7C5D00E8AE84 /* DetailsVC.swift */,
+				4D8E84612A0E040200E8AE84 /* DetailVM.swift */,
+				4D8E84632A0E049600E8AE84 /* DetailUIProvider.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		4D8E84652A0E054800E8AE84 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				4D8E84662A0E055900E8AE84 /* DetailsBuilder.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		8CBEA64F98AF5CA526EAF7CB /* Frameworks */ = {
@@ -707,19 +733,25 @@
 				4D5964B42A0ABD500077D770 /* HomeCoordinator.swift in Sources */,
 				4D282A332A0C364700077623 /* LocalFavoriteEntities.swift in Sources */,
 				4D5964A82A0AB8830077D770 /* NSObject+Ext.swift in Sources */,
+				4D8E84602A0D7C5D00E8AE84 /* DetailsVC.swift in Sources */,
 				4D5964972A09679F0077D770 /* TableViewProvider.swift in Sources */,
 				4D282A2F2A0C2D0600077623 /* GitHubModel.xcdatamodeld in Sources */,
+				4D8E84622A0E040200E8AE84 /* DetailVM.swift in Sources */,
 				4D282A312A0C31DA00077623 /* LocalManager.swift in Sources */,
 				4D5964C42A0B71E10077D770 /* FavoritesCoordinator.swift in Sources */,
 				4D5964592A0955EC0077D770 /* AppDelegate.swift in Sources */,
+				4D8E846B2A0E149900E8AE84 /* ToggleButton.swift in Sources */,
 				4D5964D52A0B82380077D770 /* GoogleRepoListService.swift in Sources */,
 				4D8E845C2A0CD23600E8AE84 /* Coordinator.swift in Sources */,
 				4D5964A52A0AB8020077D770 /* MainCoordinator.swift in Sources */,
+				4D8E84692A0E09BB00E8AE84 /* DetailUseCase.swift in Sources */,
 				4D5964D02A0B7D0E0077D770 /* UITableView+Ext.swift in Sources */,
 				4D5964D72A0B82C80077D770 /* GoogleRepoRequestEntity.swift in Sources */,
 				4D5964BC2A0ADE950077D770 /* SplashBuilder.swift in Sources */,
 				4D5964A32A0AB7AF0077D770 /* MainTabbarVC.swift in Sources */,
+				4D8E84642A0E049600E8AE84 /* DetailUIProvider.swift in Sources */,
 				4D5964CE2A0B77780077D770 /* HomeListProvider.swift in Sources */,
+				4D8E84672A0E055900E8AE84 /* DetailsBuilder.swift in Sources */,
 				4D59649B2A0968470077D770 /* ApiManager.swift in Sources */,
 				4D5964D32A0B81F10077D770 /* HomeUseCase.swift in Sources */,
 				4D5964A02A0968CC0077D770 /* KError.swift in Sources */,
