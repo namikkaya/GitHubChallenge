@@ -53,6 +53,11 @@
 		4D8E84672A0E055900E8AE84 /* DetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84662A0E055900E8AE84 /* DetailsBuilder.swift */; };
 		4D8E84692A0E09BB00E8AE84 /* DetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84682A0E09BB00E8AE84 /* DetailUseCase.swift */; };
 		4D8E846B2A0E149900E8AE84 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E846A2A0E149900E8AE84 /* ToggleButton.swift */; };
+		4D8E84712A0E5A7200E8AE84 /* FavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84702A0E5A7200E8AE84 /* FavoritesVM.swift */; };
+		4D8E84732A0E5A9800E8AE84 /* FavoritesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84722A0E5A9800E8AE84 /* FavoritesUseCase.swift */; };
+		4D8E84752A0E5C2600E8AE84 /* FavoritesListProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84742A0E5C2600E8AE84 /* FavoritesListProvider.swift */; };
+		4D8E84772A0E5D2A00E8AE84 /* GoogleRepoDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E84762A0E5D2A00E8AE84 /* GoogleRepoDetailService.swift */; };
+		4D8E847C2A0E6B5000E8AE84 /* LocalItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8E847B2A0E6B5000E8AE84 /* LocalItemCell.swift */; };
 		5F250F59ED05A92605B1E514 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16E9307EB535685E5EA85281 /* Pods_GitHubChallenge_GitHubChallengeUITests.framework */; };
 		88F7BB819603AFC75680AA73 /* Pods_GitHubChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B689D7253BCFC0A57EC49D3 /* Pods_GitHubChallenge.framework */; };
 /* End PBXBuildFile section */
@@ -127,6 +132,11 @@
 		4D8E84662A0E055900E8AE84 /* DetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsBuilder.swift; sourceTree = "<group>"; };
 		4D8E84682A0E09BB00E8AE84 /* DetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUseCase.swift; sourceTree = "<group>"; };
 		4D8E846A2A0E149900E8AE84 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		4D8E84702A0E5A7200E8AE84 /* FavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVM.swift; sourceTree = "<group>"; };
+		4D8E84722A0E5A9800E8AE84 /* FavoritesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesUseCase.swift; sourceTree = "<group>"; };
+		4D8E84742A0E5C2600E8AE84 /* FavoritesListProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListProvider.swift; sourceTree = "<group>"; };
+		4D8E84762A0E5D2A00E8AE84 /* GoogleRepoDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleRepoDetailService.swift; sourceTree = "<group>"; };
+		4D8E847B2A0E6B5000E8AE84 /* LocalItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalItemCell.swift; sourceTree = "<group>"; };
 		545946F7B45A7597279BE909 /* Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallenge-GitHubChallengeUITests/Pods-GitHubChallenge-GitHubChallengeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F07A935BCFF67A483F34CB8 /* Pods-GitHubChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.release.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		9F23D553EAF1BEAEF6ED191E /* Pods-GitHubChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubChallengeTests/Pods-GitHubChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				4D5964D42A0B82380077D770 /* GoogleRepoListService.swift */,
+				4D8E84762A0E5D2A00E8AE84 /* GoogleRepoDetailService.swift */,
 			);
 			path = Remotes;
 			sourceTree = "<group>";
@@ -405,6 +416,8 @@
 			isa = PBXGroup;
 			children = (
 				4D5964C62A0B74080077D770 /* FavoritesVC.swift */,
+				4D8E84702A0E5A7200E8AE84 /* FavoritesVM.swift */,
+				4D8E84742A0E5C2600E8AE84 /* FavoritesListProvider.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -422,6 +435,7 @@
 			children = (
 				4D5964D22A0B81F10077D770 /* HomeUseCase.swift */,
 				4D8E84682A0E09BB00E8AE84 /* DetailUseCase.swift */,
+				4D8E84722A0E5A9800E8AE84 /* FavoritesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -429,6 +443,7 @@
 		4D5964DA2A0B8D280077D770 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4D8E847A2A0E6B3700E8AE84 /* Favorites */,
 				4D5964DB2A0B8D380077D770 /* Home */,
 			);
 			path = Views;
@@ -466,6 +481,14 @@
 				4D8E84662A0E055900E8AE84 /* DetailsBuilder.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		4D8E847A2A0E6B3700E8AE84 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				4D8E847B2A0E6B5000E8AE84 /* LocalItemCell.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 		8CBEA64F98AF5CA526EAF7CB /* Frameworks */ = {
@@ -732,10 +755,13 @@
 				4D5964AE2A0ABB230077D770 /* BaseViewController.swift in Sources */,
 				4D5964B42A0ABD500077D770 /* HomeCoordinator.swift in Sources */,
 				4D282A332A0C364700077623 /* LocalFavoriteEntities.swift in Sources */,
+				4D8E84732A0E5A9800E8AE84 /* FavoritesUseCase.swift in Sources */,
 				4D5964A82A0AB8830077D770 /* NSObject+Ext.swift in Sources */,
 				4D8E84602A0D7C5D00E8AE84 /* DetailsVC.swift in Sources */,
 				4D5964972A09679F0077D770 /* TableViewProvider.swift in Sources */,
+				4D8E84752A0E5C2600E8AE84 /* FavoritesListProvider.swift in Sources */,
 				4D282A2F2A0C2D0600077623 /* GitHubModel.xcdatamodeld in Sources */,
+				4D8E847C2A0E6B5000E8AE84 /* LocalItemCell.swift in Sources */,
 				4D8E84622A0E040200E8AE84 /* DetailVM.swift in Sources */,
 				4D282A312A0C31DA00077623 /* LocalManager.swift in Sources */,
 				4D5964C42A0B71E10077D770 /* FavoritesCoordinator.swift in Sources */,
@@ -746,10 +772,12 @@
 				4D5964A52A0AB8020077D770 /* MainCoordinator.swift in Sources */,
 				4D8E84692A0E09BB00E8AE84 /* DetailUseCase.swift in Sources */,
 				4D5964D02A0B7D0E0077D770 /* UITableView+Ext.swift in Sources */,
+				4D8E84772A0E5D2A00E8AE84 /* GoogleRepoDetailService.swift in Sources */,
 				4D5964D72A0B82C80077D770 /* GoogleRepoRequestEntity.swift in Sources */,
 				4D5964BC2A0ADE950077D770 /* SplashBuilder.swift in Sources */,
 				4D5964A32A0AB7AF0077D770 /* MainTabbarVC.swift in Sources */,
 				4D8E84642A0E049600E8AE84 /* DetailUIProvider.swift in Sources */,
+				4D8E84712A0E5A7200E8AE84 /* FavoritesVM.swift in Sources */,
 				4D5964CE2A0B77780077D770 /* HomeListProvider.swift in Sources */,
 				4D8E84672A0E055900E8AE84 /* DetailsBuilder.swift in Sources */,
 				4D59649B2A0968470077D770 /* ApiManager.swift in Sources */,

@@ -26,7 +26,7 @@ final class ApiManager {
     
     func fetchData<Input: Encodable, Output:Decodable>(httpMethod: HTTPMethod = .get,
                                                        endPoint: EndPoint = .repoList,
-                                                       parameter: Input? = nil,
+                                                       parameter: Input?,
                                                        outPutEntity: Output.Type,
                                                        completion: @escaping (Result<Output, KError>) -> ()) {
         AF.request(baseURL + endPoint.getPath(), method: httpMethod, parameters: parameter).responseDecodable(of: outPutEntity, queue: .global(qos: .background)) { [weak self] response in
@@ -41,6 +41,21 @@ final class ApiManager {
                         self?.totalPage = totalPages
                     }
                 }
+                completion(.success(result))
+            case let .failure(error):
+                let kError = error.mapToKError()
+                completion(.failure(kError))
+            }
+        }
+    }
+    
+    func fetchData<Output:Decodable>(httpMethod: HTTPMethod = .get,
+                                     endPoint: String,
+                                     outPutEntity: Output.Type,
+                                     completion: @escaping (Result<Output, KError>) -> ()) {
+        AF.request(baseURL + endPoint, method: httpMethod).responseDecodable(of: outPutEntity, queue: .global(qos: .background)) { response in
+            switch response.result {
+            case let .success(result):
                 completion(.success(result))
             case let .failure(error):
                 let kError = error.mapToKError()
